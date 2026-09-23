@@ -2,6 +2,10 @@
 
 A minimal collection of HTTP exception classes for PHP 8.1+.
 
+> **Background**: miGears is the open-source successor of **TinyGears**, a
+> self-developed PHP framework. It was renamed and open-sourced recently because
+> the name *TinyGears* is already taken in the open-source community.
+
 ## Features
 
 - **Zero dependencies** — requires only PHP `^8.1`
