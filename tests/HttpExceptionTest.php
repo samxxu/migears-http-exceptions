@@ -88,6 +88,11 @@ class HttpExceptionTest extends TestCase
         $this->assertTrue($prop->isReadOnly());
     }
 
+    public function testVersionConstantMatchesPackageVersion(): void
+    {
+        $this->assertSame('2.0.0', HttpException::VERSION);
+    }
+
     // ── Sub-class default status codes & messages ──────────────────────
 
     /**

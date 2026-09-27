@@ -6,6 +6,9 @@ namespace MiGears\HttpExceptions;
 
 final class UnprocessableEntityHttpException extends HttpException
 {
+    /**
+     * @param array<string,string> $headers HTTP headers to send with the response
+     */
     public function __construct(
         string $message = 'Unprocessable Entity',
         array $headers = [],
