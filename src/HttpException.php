@@ -11,7 +11,7 @@ class HttpException extends RuntimeException
     public const VERSION = '2.0.0';
 
     /**
-     * @param int                  $statusCode HTTP status code
+     * @param int                  $statusCode HTTP status code; not range-validated — the sender validates
      * @param string               $message    Exception message
      * @param array<string,string> $headers    HTTP headers to send with the response
      * @param \Throwable|null      $previous   Previous exception for chaining

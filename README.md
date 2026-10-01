@@ -15,6 +15,22 @@ A minimal collection of HTTP exception classes for PHP 8.1+.
 - **Framework-agnostic** — carries status code and headers; the framework decides how to send them
 - **Fully tested** — complete PHPUnit test suite
 
+## Boundaries
+
+**In scope**
+
+- The base `HttpException` and the 14 concrete classes: status code, message, headers and
+  previous-exception chaining (PSR-4 under `MiGears\HttpExceptions`).
+- Carrying the status code and headers as data (`statusCode` / `headers` readonly properties,
+  `getStatusCode()` / `getHeaders()`).
+
+**Not in scope (by design)**
+
+- Sending the response — no `Response` object, no output, no headers emitted; turning the
+  exception into a response belongs to the framework or the caller.
+- Routing, error rendering, logging, and choosing which status code a failure deserves.
+- Any dependency beyond PHP itself (zero-dependency, no PSR interfaces).
+
 ## Installation
 
 ```bash
@@ -79,6 +95,10 @@ $e->headers;          // [] (readonly public property)
 $e->getMessage();     // "I'm a teapot"
 ```
 
+The status code is carried as-is and is **not range-validated**: any integer is accepted (`0`, `999`
+or a custom `418`), because the class is framework-agnostic and validating the code belongs to
+whoever sends the response.
+
 ## Available exceptions
 
 | Class                              | Code | Default Message          |
@@ -123,6 +143,19 @@ MIT
 - **14 个常用 HTTP 异常** — 覆盖 4xx 和 5xx 状态码
 - **框架无关** — 携带状态码和响应头，由框架决定如何发送
 - **完整测试** — 完整的 PHPUnit 测试套件
+
+## 边界
+
+**范围内**
+
+- 共同基类 `HttpException` 与 14 个具体异常类：状态码、消息、响应头、前置异常链；PSR-4 根为 `MiGears\HttpExceptions`。
+- 把状态码与响应头作为数据携带（`statusCode` / `headers` 只读属性，`getStatusCode()` / `getHeaders()`）。
+
+**范围外（刻意不做）**
+
+- 发送响应 —— 不提供 `Response` 对象、不做输出、不发送响应头；把异常变成响应属于框架或调用方。
+- 路由、错误渲染、日志，以及「某种失败该配哪个状态码」。
+- PHP 之外的任何依赖（零依赖，不引入 PSR 接口）。
 
 ## 安装
 
@@ -187,6 +220,9 @@ $e->getHeaders();     // []
 $e->headers;          // []（readonly 公共属性）
 $e->getMessage();     // "I'm a teapot"
 ```
+
+状态码被原样携带，**不做范围校验**：任何整数都会被接受（`0`、`999` 或自定义的 `418`），因为本类与框架无关，
+校验状态码属于发送响应的一方。
 
 ## 可用异常列表
 

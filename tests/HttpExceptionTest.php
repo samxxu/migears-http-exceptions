@@ -88,6 +88,16 @@ class HttpExceptionTest extends TestCase
         $this->assertTrue($prop->isReadOnly());
     }
 
+    public function testBaseConstructorDocumentsStatusCodeIsNotRangeValidated(): void
+    {
+        $doc = (new \ReflectionMethod(HttpException::class, '__construct'))->getDocComment();
+        $this->assertStringContainsString(
+            '$statusCode HTTP status code; not range-validated',
+            $doc === false ? '' : $doc,
+            'HttpException::__construct() must document that the status code is not range-validated',
+        );
+    }
+
     public function testVersionConstantMatchesPackageVersion(): void
     {
         $this->assertSame('2.0.0', HttpException::VERSION);
@@ -188,8 +198,24 @@ class HttpExceptionTest extends TestCase
         }
     }
 
+    /**
+     * @dataProvider exceptionClassProvider
+     */
+    public function testEachExceptionDocumentsHeadersValueType(string $class): void
+    {
+        $doc = (new \ReflectionMethod($class, '__construct'))->getDocComment();
+        $this->assertStringContainsString(
+            '@param array<string,string> $headers',
+            $doc === false ? '' : $doc,
+            "$class::__construct() must document the \$headers array value type",
+        );
+    }
+
     // ── Data provider ──────────────────────────────────────────────────
 
+    /**
+     * @return array<string, array{0: class-string<HttpException>, 1: int, 2: string}>
+     */
     public static function exceptionClassProvider(): array
     {
         return [
