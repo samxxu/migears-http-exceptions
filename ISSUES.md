@@ -17,18 +17,18 @@ Legend — **P0** functional or security · **P1** documentation that fails when
 
 | | |
 |---|---|
-| Unsettled | P0 0 · P1 0 · P2 0 · P3 2 · other 1 |
-| Settled | 0 of 3 |
-| Waiting on the owner | `P3-1`, `P3-2` |
-| Waiting on the reviewer | `G2` |
+| Unsettled | P0 0 · P1 0 · P2 0 · P3 1 · other 0 |
+| Settled | 2 of 3 |
+| Waiting on the owner | `P3-2` |
 | Waiting on the coordinator | _nothing_ |
+| Waiting on the reviewer | _nothing_ |
 | Deferred, owing nobody | _nothing_ |
 
 | id | level | status | title |
 |---|---|---|---|
-| [`P3-1`](issues/P3-1.md) | P3 | **open** | The 14 subclass constructors still have no docblock while the parent … |
-| [`P3-2`](issues/P3-2.md) | P3 | **open** | `HttpException::VERSION` has zero references, and the base class … |
-| [`G2`](issues/G2.md) | - | **fixed** | Strict flags: `phpunit.xml.dist` currently sets none of the five. The … |
+| [`P3-1`](issues/P3-1.md) | P3 | **verified** | The 14 subclass constructors still have no docblock while the parent … |
+| [`P3-2`](issues/P3-2.md) | P3 | **accepted** | `HttpException::VERSION` has zero references, and the base class … |
+| [`G2`](issues/G2.md) | - | **verified** | Strict flags: `phpunit.xml.dist` currently sets none of the five. The … |
 
 ## Unclosed
 
@@ -37,15 +37,13 @@ highest severity first. `waiting on` is the party who acts next, read from that 
 
 | | |
 |---|---|
-| Unclosed | **3** of 3 |
-| By status | `open` 2 · `fixed` 1 |
-| Waiting on | owner 2 · reviewer 1 |
+| Unclosed | **1** of 3 |
+| By status | `accepted` 1 |
+| Waiting on | owner 1 |
 
 | level | item | status | waiting on | title |
 |---|---|---|---|---|
-| **P3** | [`P3-1`](issues/P3-1.md) | `open` | owner | The 14 subclass constructors still have no docblock while the parent … |
-| **P3** | [`P3-2`](issues/P3-2.md) | `open` | owner | `HttpException::VERSION` has zero references, and the base class … |
-| **-** | [`G2`](issues/G2.md) | `fixed` | reviewer | Strict flags: `phpunit.xml.dist` currently sets none of the five. The … |
+| **P3** | [`P3-2`](issues/P3-2.md) | `accepted` | owner | `HttpException::VERSION` has zero references, and the base class … |
 
 ## Verdict
 
@@ -86,18 +84,18 @@ No test for status code validation (or explicit absence thereof); no test for su
 
 | | |
 |---|---|
-| 未了结 | P0 0 · P1 0 · P2 0 · P3 2 · 其他 1 |
-| 已了结 | 0 / 3 |
-| 等负责人 | `P3-1`, `P3-2` |
-| 等评审方 | `G2` |
+| 未了结 | P0 0 · P1 0 · P2 0 · P3 1 · 其他 0 |
+| 已了结 | 2 / 3 |
+| 等模块主 | `P3-2` |
 | 等协调人 | _无_ |
+| 等评审方 | _无_ |
 | 已暂缓，不欠谁 | _无_ |
 
 | id | 级别 | 状态 | 标题 |
 |---|---|---|---|
-| [`P3-1`](issues/P3-1.md) | P3 | **open** | 14 个子类构造器仍无 docblock，而父类记录了 @param array<string,string> … |
-| [`P3-2`](issues/P3-2.md) | P3 | **open** | HttpException::VERSION 零引用；基类接受任意状态码（含 0 与 999）。README 主动示范自定义 … |
-| [`G2`](issues/G2.md) | - | **fixed** | 严格开关：`phpunit.xml.dist` … |
+| [`P3-1`](issues/P3-1.md) | P3 | **verified** | 14 个子类构造器仍无 docblock，而父类记录了 @param array<string,string> … |
+| [`P3-2`](issues/P3-2.md) | P3 | **accepted** | HttpException::VERSION 零引用；基类接受任意状态码（含 0 与 999）。README 主动示范自定义 … |
+| [`G2`](issues/G2.md) | - | **verified** | 严格开关：`phpunit.xml.dist` … |
 
 ## 未关闭
 
@@ -106,15 +104,13 @@ No test for status code validation (or explicit absence thereof); no test for su
 
 | | |
 |---|---|
-| 未关闭 | **3** / 3 |
-| 按状态 | `open` 2 · `fixed` 1 |
-| 等在谁 | 负责人 2 · 评审方 1 |
+| 未关闭 | **1** / 3 |
+| 按状态 | `accepted` 1 |
+| 等在谁 | 模块主 1 |
 
 | 级别 | 条目 | 状态 | 等在谁 | 标题 |
 |---|---|---|---|---|
-| **P3** | [`P3-1`](issues/P3-1.md) | `open` | 负责人 | 14 个子类构造器仍无 docblock，而父类记录了 @param array<string,string> … |
-| **P3** | [`P3-2`](issues/P3-2.md) | `open` | 负责人 | HttpException::VERSION 零引用；基类接受任意状态码（含 0 与 999）。README 主动示范自定义 … |
-| **-** | [`G2`](issues/G2.md) | `fixed` | 评审方 | 严格开关：`phpunit.xml.dist` … |
+| **P3** | [`P3-2`](issues/P3-2.md) | `accepted` | 模块主 | HttpException::VERSION 零引用；基类接受任意状态码（含 0 与 999）。README 主动示范自定义 … |
 
 ## 结论
 
