@@ -4,12 +4,12 @@
 > per item: a front-matter header and a thread. This file is generated from them and can be rewritten at
 > any time; edit an item, never this file.
 >
-> From the miGears Full-Module Code Review Report (5th round, 2026-09-28).
+> From the miGears Full-Module Code Review Report (6th round, 2026-10-01).
 
 | | |
 |---|---|
 | Status | **Best state** |
-| Size | src 206 lines (net) · 109 tests · 15 src files |
+| Size | src 206 lines (net) · 124 tests · 15 src files |
 
 Legend — **P0** functional or security · **P1** documentation that fails when copied · **P2** robustness · **P3** metadata and docs
 
@@ -17,9 +17,9 @@ Legend — **P0** functional or security · **P1** documentation that fails when
 
 | | |
 |---|---|
-| Unsettled | P0 0 · P1 0 · P2 0 · P3 1 · other 0 |
-| Settled | 2 of 3 |
-| Waiting on the owner | `P3-2` |
+| Unsettled | P0 0 · P1 0 · P2 0 · P3 0 · other 0 |
+| Settled | 3 of 3 |
+| Waiting on the owner | _nothing_ |
 | Waiting on the coordinator | _nothing_ |
 | Waiting on the reviewer | _nothing_ |
 | Deferred, owing nobody | _nothing_ |
@@ -27,35 +27,24 @@ Legend — **P0** functional or security · **P1** documentation that fails when
 | id | level | status | title |
 |---|---|---|---|
 | [`P3-1`](issues/P3-1.md) | P3 | **verified** | The 14 subclass constructors still have no docblock while the parent … |
-| [`P3-2`](issues/P3-2.md) | P3 | **accepted** | `HttpException::VERSION` has zero references, and the base class … |
+| [`P3-2`](issues/P3-2.md) | P3 | **verified** | `HttpException::VERSION` has zero references, and the base class … |
 | [`G2`](issues/G2.md) | - | **verified** | Strict flags: `phpunit.xml.dist` currently sets none of the five. The … |
 
 ## Unclosed
 
-What is left to do here: every item whose `status` is not `verified` or `closed`,
-highest severity first. `waiting on` is the party who acts next, read from that status.
-
-| | |
-|---|---|
-| Unclosed | **1** of 3 |
-| By status | `accepted` 1 |
-| Waiting on | owner 1 |
-
-| level | item | status | waiting on | title |
-|---|---|---|---|---|
-| **P3** | [`P3-2`](issues/P3-2.md) | `accepted` | owner | `HttpException::VERSION` has zero references, and the base class … |
+_Nothing unclosed — every item in this module is `verified` or `closed`._
 
 ## Verdict
 
-A minimal, clean collection of 14 HTTP exception classes with consistent design and zero runtime dependencies. All defects are P3-level metadata and docstring polish.
+The permissive range is now a documented contract rather than an unstated one, and the class family is otherwise identical in shape.
 
 ## Fixed since the last round
 
-G2 strict flags confirmed complete; P3-1 subclass docblocks now document $headers param.
+P3-2 verified by mutation: the base constructor now documents that the status code is not range-validated (the recorded option B). All fourteen status codes also match the README table one for one.
 
 ## Test gaps
 
-No test for status code validation (or explicit absence thereof); no test for subclass final keyword enforcement; no test verifying all subclasses are listed in the README table.
+No real gap: the constructor contract, default messages, header/previous chaining and the README table are all data-provider covered.
 
 ## Verification protocol
 
@@ -71,12 +60,12 @@ No test for status code validation (or explicit absence thereof); no test for su
 > 本模块问题的概览。条目本体在 [`issues/`](issues/README.md)，一条目一文件：前置字段加讨论串。
 > 本文件由条目生成，随时可以整段重写；请改条目，不要改本文件。
 >
-> 出自 miGears 全模块代码评审报告（5th round，2026-09-28）。
+> 出自 miGears 全模块代码评审报告（6th round，2026-10-01）。
 
 | | |
 |---|---|
 | 状态 | **状态最好** |
-| 体量 | src 206 行（净）· 109 个用例 · 15 个源文件 |
+| 体量 | src 206 行（净）· 124 个用例 · 15 个源文件 |
 
 级别说明 — **P0** 功能性或安全级 · **P1** 文档照抄即错 · **P2** 健壮性 · **P3** 元数据与文档
 
@@ -84,9 +73,9 @@ No test for status code validation (or explicit absence thereof); no test for su
 
 | | |
 |---|---|
-| 未了结 | P0 0 · P1 0 · P2 0 · P3 1 · 其他 0 |
-| 已了结 | 2 / 3 |
-| 等模块主 | `P3-2` |
+| 未了结 | P0 0 · P1 0 · P2 0 · P3 0 · 其他 0 |
+| 已了结 | 3 / 3 |
+| 等模块主 | _无_ |
 | 等协调人 | _无_ |
 | 等评审方 | _无_ |
 | 已暂缓，不欠谁 | _无_ |
@@ -94,35 +83,24 @@ No test for status code validation (or explicit absence thereof); no test for su
 | id | 级别 | 状态 | 标题 |
 |---|---|---|---|
 | [`P3-1`](issues/P3-1.md) | P3 | **verified** | 14 个子类构造器仍无 docblock，而父类记录了 @param array<string,string> … |
-| [`P3-2`](issues/P3-2.md) | P3 | **accepted** | HttpException::VERSION 零引用；基类接受任意状态码（含 0 与 999）。README 主动示范自定义 … |
+| [`P3-2`](issues/P3-2.md) | P3 | **verified** | HttpException::VERSION 零引用；基类接受任意状态码（含 0 与 999）。README 主动示范自定义 … |
 | [`G2`](issues/G2.md) | - | **verified** | 严格开关：`phpunit.xml.dist` … |
 
 ## 未关闭
 
-本模块还剩什么要做：所有 `status` 不是 `verified` 或 `closed` 的条目，按严重度从高到低。
-`waiting on` 是下一步该动手的一方，由其状态读出。
-
-| | |
-|---|---|
-| 未关闭 | **1** / 3 |
-| 按状态 | `accepted` 1 |
-| 等在谁 | 模块主 1 |
-
-| 级别 | 条目 | 状态 | 等在谁 | 标题 |
-|---|---|---|---|---|
-| **P3** | [`P3-2`](issues/P3-2.md) | `accepted` | 模块主 | HttpException::VERSION 零引用；基类接受任意状态码（含 0 与 999）。README 主动示范自定义 … |
+_无未关闭条目——本模块每条都已是 `verified` 或 `closed`。_
 
 ## 结论
 
-一个极简、干净的 14 个 HTTP 异常类集合，设计一致，零运行时依赖。所有缺陷均为 P3 级元数据与文档注释润色。
+宽松区间现已是写在文档里的契约，而非默认行为；该类族的其余形状完全一致。
 
 ## 本轮已修复确认
 
-G2 strict flags confirmed complete; P3-1 subclass docblocks now document $headers param.
+P3-2 verified by mutation: the base constructor now documents that the status code is not range-validated (the recorded option B). All fourteen status codes also match the README table one for one.
 
 ## 测试盲区
 
-无状态码校验（或明确无校验）测试；无子类 final 关键字强制测试；无验证 README 表格列出所有子类的测试。
+无实质盲区：构造契约、默认消息、headers/previous 链与 README 表均由数据提供者覆盖。
 
 ## 验证方式
 
